@@ -1,15 +1,17 @@
 <template>
     <div class="container">
         <battery level="49"/>
+        <temperature temp="50" />
     </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'nuxt-property-decorator';
 import Battery from '~/components/Battery.vue';
+import Temperature from '~/components/Temperature.vue';
 
 @Component({
-    components: { Battery }
+    components: { Battery, Temperature }
 })
 export default class Home extends Vue {
     $socket: any;
@@ -24,6 +26,6 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
     .container {
-        display: grid;
+        /*display: grid;*/
     }
 </style>
