@@ -11,6 +11,8 @@ const config = {
         baseURL: 'http://localhost:3001'
     },
 
+    plugins: ['~/plugins/socket.ts']
+
 };
 
 export default config;
