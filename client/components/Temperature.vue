@@ -1,5 +1,5 @@
 <template>
-    <h1 :style="'color:' + getColor + ';'">{{toFahrenhet()}}&deg;</h1>
+    <h1 :style="'color:' + getColor + ';'">{{averageTemp()}}&deg;</h1>
 </template>
 
 <script lang="ts">
@@ -7,15 +7,17 @@ import {Component, Vue, Prop} from 'nuxt-property-decorator';
 
 @Component
 export default class Temperature extends Vue {
-    @Prop({ required: true }) temp!: string;
-    toFahrenhet () {
-        return this.temp * 9 / 5 + 32;
+    @Prop({ required: true }) tempLow!: string;
+    @Prop({ required: true }) tempHigh!: string;
+
+    private averageTemp() {
+        return (parseFloat(this.tempLow) + parseFloat(this.tempHigh)) / 2;
     }
 
     get getColor() {
-        if (this.toFahrenhet() > 80) { return 'red' }
-        else if ((this.toFahrenhet() < 80) && (this.toFahrenhet() > 50)) { return 'yellow' }
-        else if (this.toFahrenhet() <= 50) { return 'blue' }
+        if (this.averageTemp() > 80) { return 'red' }
+        else if ((this.averageTemp() < 80) && (this.averageTemp() > 50)) { return 'yellow' }
+        else if (this.averageTemp() <= 50) { return 'blue' }
     }
 }
 </script>
