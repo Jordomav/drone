@@ -1,6 +1,8 @@
 <template>
     <div class="battery">
-        <div :style="'flex-basis:' + level + '%; background-color:' + getColor + ';'"></div>
+        <div class="battery__progress" :style="'flex-basis:' + level + '%; background-color:' + getColor + ';'">
+            {{ level + '%' }}
+        </div>
     </div>
 </template>
 
@@ -25,5 +27,10 @@ export default class Battery extends Vue {
         height: 50px;
         width: 200px;
         border: 3px solid #000;
+        .battery__progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 </style>
