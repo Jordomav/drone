@@ -11,7 +11,7 @@ import {Component, Vue, Prop} from 'nuxt-property-decorator';
 
 @Component
 export default class Battery extends Vue {
-    @Prop({ required: true }) level!: string;
+    @Prop({ required: true }) level!: number;
 
     get getColor() {
         if (this.level > 50) { return 'green' }
